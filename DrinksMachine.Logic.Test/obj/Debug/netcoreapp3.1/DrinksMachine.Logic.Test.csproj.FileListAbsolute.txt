@@ -1,0 +1,5 @@
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\DrinksMachine.Model.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.csprojAssemblyReference.cache
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.AssemblyInfoInputs.cache
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.AssemblyInfo.cs
