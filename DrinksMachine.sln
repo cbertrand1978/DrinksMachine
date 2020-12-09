@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinksMachine.Model", "Drin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinksMachine.UI", "DrinksMachine.UI\DrinksMachine.UI.csproj", "{A105F729-04D8-47EB-88A0-D9FD042A66A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{CE8DE20C-A48C-421E-B242-8D8DB23C532A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A105F729-04D8-47EB-88A0-D9FD042A66A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A105F729-04D8-47EB-88A0-D9FD042A66A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A105F729-04D8-47EB-88A0-D9FD042A66A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE8DE20C-A48C-421E-B242-8D8DB23C532A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE8DE20C-A48C-421E-B242-8D8DB23C532A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE8DE20C-A48C-421E-B242-8D8DB23C532A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE8DE20C-A48C-421E-B242-8D8DB23C532A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

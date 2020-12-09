@@ -1,0 +1,14 @@
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.deps.json
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.pdb
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\bin\Debug\netcoreapp3.1\DrinksMachine.Model.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\bin\Debug\netcoreapp3.1\DrinksMachine.Model.pdb
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.csprojAssemblyReference.cache
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.AssemblyInfoInputs.cache
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.AssemblyInfo.cs
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.csproj.CoreCompileInputs.cache
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.csproj.CopyComplete
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.pdb
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\bin\Debug\netcoreapp3.1\Common.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic\bin\Debug\netcoreapp3.1\Common.pdb

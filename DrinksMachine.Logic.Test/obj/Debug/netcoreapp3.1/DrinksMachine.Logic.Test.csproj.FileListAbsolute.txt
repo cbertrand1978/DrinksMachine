@@ -3,3 +3,17 @@ E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp
 E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.csprojAssemblyReference.cache
 E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.AssemblyInfoInputs.cache
 E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.AssemblyInfo.cs
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\nunit.engine.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\nunit.engine.api.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\nunit.engine.core.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.deps.json
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.pdb
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\DrinksMachine.Logic.pdb
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\bin\Debug\netcoreapp3.1\DrinksMachine.Model.pdb
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.csproj.CoreCompileInputs.cache
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.csproj.CopyComplete
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.dll
+E:\SourceControl\Git\DrinksMachine\DrinksMachine.Logic.Test\obj\Debug\netcoreapp3.1\DrinksMachine.Logic.Test.pdb

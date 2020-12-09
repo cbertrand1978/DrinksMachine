@@ -1,0 +1,63 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "DrinksMachine.UI/1.0.0": {
+        "dependencies": {
+          "DrinksMachine.Logic": "1.0.0",
+          "DrinksMachine.Model": "1.0.0"
+        },
+        "runtime": {
+          "DrinksMachine.UI.dll": {}
+        }
+      },
+      "Common/1.0.0": {
+        "runtime": {
+          "Common.dll": {}
+        }
+      },
+      "DrinksMachine.Logic/1.0.0": {
+        "dependencies": {
+          "DrinksMachine.Model": "1.0.0"
+        },
+        "runtime": {
+          "DrinksMachine.Logic.dll": {}
+        }
+      },
+      "DrinksMachine.Model/1.0.0": {
+        "dependencies": {
+          "Common": "1.0.0"
+        },
+        "runtime": {
+          "DrinksMachine.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DrinksMachine.UI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DrinksMachine.Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DrinksMachine.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

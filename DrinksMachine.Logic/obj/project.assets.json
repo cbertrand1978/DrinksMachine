@@ -2,9 +2,22 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
       "DrinksMachine.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Common": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/DrinksMachine.Model.dll": {}
         },
@@ -15,6 +28,11 @@
     }
   },
   "libraries": {
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
+    },
     "DrinksMachine.Model/1.0.0": {
       "type": "project",
       "path": "../DrinksMachine.Model/DrinksMachine.Model.csproj",

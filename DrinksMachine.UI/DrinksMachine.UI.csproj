@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DrinksMachine.Logic\DrinksMachine.Logic.csproj" />
+    <ProjectReference Include="..\DrinksMachine.Model\DrinksMachine.Model.csproj" />
+  </ItemGroup>
+
 </Project>
