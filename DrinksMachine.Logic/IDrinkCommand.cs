@@ -14,9 +14,8 @@ namespace DrinksMachine.Logic
         /// <summary>
         /// Performs a command for the specific task.
         /// </summary>
-        /// <param name="drink">The drink to apply the command to.</param>
-        /// <param name="template">The drink that should be used as a template.</param>
-        /// <returns>A <see cref="CommandResult"/> containing the result of the command.</returns>
-        CommandResult PerformCommand(Drink drink, Drink template);
+        /// <param name="result">A <see cref="CommandResult"/> to record the outcome.</param>
+        /// <returns>True if the command executed successfully, else false.</returns>
+        bool PerformCommand(Drink template, CommandResult result);
     }
 }

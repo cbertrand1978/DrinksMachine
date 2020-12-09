@@ -1,13 +1,11 @@
-﻿using Common;
-using DrinksMachine.Model;
+﻿using DrinksMachine.Model;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace DrinksMachine.Logic
 {
-    /// <summary>
-    /// Implementation of the <see cref="IDrinkCommand"/> API.  This implementation deals with the application of water to the drink.
-    /// </summary>
-    public class WaterCommand : IDrinkCommand
+    public class AddIngredientsCommand : IDrinkCommand
     {
         /// <summary>
         /// Get/Set the sensor readings interface.
@@ -21,13 +19,12 @@ namespace DrinksMachine.Logic
         /// <exception cref="ArgumentNullException">
         /// Raised if <paramref name="machineSensorReadings"/> is null.
         /// </exception>
-        public WaterCommand(IMachineSensorReadings machineSensorReadings)
+        public AddIngredientsCommand(IMachineSensorReadings machineSensorReadings)
         {
             Require.IsNotNull(nameof(machineSensorReadings), machineSensorReadings);
 
             this.SensorReadings = machineSensorReadings;
         }
-
         /// <summary>
         /// Performs a command for the specific task.
         /// </summary>
@@ -39,26 +36,6 @@ namespace DrinksMachine.Logic
             Require.IsNotNull(nameof(template), template);
             Require.IsNotNull(nameof(result), result);
             Require.IsNotNull(nameof(result.Drink), result.Drink);
-
-            if (this.SensorReadings.WaterTemperature != template.Temperature)
-            {
-                this.SensorReadings.IncreaseWaterTemperature(template.Temperature);
-            }
-
-            if (this.SensorReadings.WaterTemperature == template.Temperature)
-            {
-                result.Drink.Temperature = this.SensorReadings.WaterTemperature;
-                result.SetSuccess(string.Format(CommandMessages.WaterCommandTemperatureSuccess, result.Drink.Temperature));
-
-                if (this.SensorReadings.WaterTankLevel < template.AmountOfWaterRequired)
-                {
-                    result.SetFailure(string.Format(CommandMessages.WaterCommandWaterAmountFailure, template.AmountOfWaterRequired, this.SensorReadings.WaterTankLevel));
-                }
-            }
-            else
-            {
-                result.SetFailure(string.Format(CommandMessages.WaterCommandTemperatureFailure, template.Temperature));
-            }
 
             return result.IsSuccess;
         }

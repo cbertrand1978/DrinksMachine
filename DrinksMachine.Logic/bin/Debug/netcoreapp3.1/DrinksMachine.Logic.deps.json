@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "DrinksMachine.Logic/1.0.0": {
         "dependencies": {
+          "Common": "1.0.0",
           "DrinksMachine.Model": "1.0.0"
         },
         "runtime": {

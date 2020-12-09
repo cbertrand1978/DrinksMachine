@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DrinksMachine.Model
 {
@@ -18,20 +19,26 @@ namespace DrinksMachine.Model
         public bool IsHot { get; set; }
 
         /// <summary>
+        /// Get/Set the amount of water required to make the drink.
+        /// </summary>
+        public int AmountOfWaterRequired { get; set; }
+
+        /// <summary>
         /// Get/Set the exact temperature required to make the drink.
         /// </summary>
-        public decimal Temperature { get; set; }
+        public int Temperature { get; set; }
 
         /// <summary>
         /// Get/Set the list of <see cref="Ingredient"/> needed to make the drink.
         /// </summary>
-        public List<Ingredient> Ingredients { get; set; }
+        public Dictionary<Ingredient, int> Ingredients { get; set; }
 
         /// <summary>
         /// Default constructor.
         /// </summary>
         public Drink()
         {
+            this.Ingredients = new Dictionary<Ingredient, int>();
         }
 
         public Drink(string name)
@@ -39,6 +46,22 @@ namespace DrinksMachine.Model
             Require.IsNotNullOrEmpty(nameof(name), name);
 
             this.Name = name;
+            this.Ingredients = new Dictionary<Ingredient, int>();
+        }
+
+        /// <summary>
+        /// Copy constructor.
+        /// </summary>
+        /// <param name="original">The original drink to copy from.</param>
+        public Drink(Drink original)
+        {
+            Require.IsNotNull(nameof(original), original);
+
+            this.Ingredients = original.Ingredients.ToDictionary((kvp) => kvp.Key, (kvp) => kvp.Value);
+            this.IsHot = original.IsHot;
+            this.Name = original.Name;
+            this.Temperature = original.Temperature;
+            
         }
     }
 }

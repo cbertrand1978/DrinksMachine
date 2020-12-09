@@ -87,6 +87,9 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "E:\\SourceControl\\Git\\DrinksMachine\\Common\\Common.csproj": {
+                "projectPath": "E:\\SourceControl\\Git\\DrinksMachine\\Common\\Common.csproj"
+              },
               "E:\\SourceControl\\Git\\DrinksMachine\\DrinksMachine.Model\\DrinksMachine.Model.csproj": {
                 "projectPath": "E:\\SourceControl\\Git\\DrinksMachine\\DrinksMachine.Model\\DrinksMachine.Model.csproj"
               }

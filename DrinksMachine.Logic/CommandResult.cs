@@ -16,36 +16,63 @@ namespace DrinksMachine.Logic
         public bool IsSuccess { get; private set; }
 
         /// <summary>
-        /// Get the message from the action.
+        /// Get the messages from the actions.
         /// </summary>
-        public string Message { get; private set; }
+        public List<string> Messages { get; private set; }
 
         /// <summary>
         /// Get the drink from the action.
         /// </summary>
-        public Drink Drink { get; private set; }
+        public Drink Drink { get; set; }
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public CommandResult()
+        {
+            this.Messages = new List<string>();
+        }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="isSuccess">Flag indicating if the action was successful.</param>
-        /// <param name="message">Message from the action.</param>
-        /// <param name="drink">The resulting drink from the action.</param>
+        /// <param name="drink">The drink to associate with this result.</param>
+        public CommandResult(Drink drink)
+        {
+            Require.IsNotNull(nameof(drink), drink);
+            this.Messages = new List<string>();
+
+            this.Drink = drink;
+        }
+
+        /// <summary>
+        /// Sets the result as success and adds a message plus the result.
+        /// </summary>
+        /// <param name="message">The message to be added.</param>
         /// <exception cref="ArgumentNullException">
         /// Raised if <paramref name="message"/> is null.
         /// Raised if <paramref name="drink"/> is null.
         /// </exception>
-        /// <exception cref="ArgumentException">
-        /// Raised if <paramref name="message"/> is empty.
-        /// </exception>
-        public CommandResult(bool isSuccess, string message, Drink drink)
+        public void SetSuccess(string message)
         {
             Require.IsNotNullOrEmpty(nameof(message), message);
-            Require.IsNotNull(nameof(drink), drink);
+            this.IsSuccess = true;
+            this.Messages.Add(message);
+        }
 
-            this.IsSuccess = isSuccess;
-            this.Message = message;
-            this.Drink = drink;
+        /// <summary>
+        /// Sets the result as success and adds a message plus the result.
+        /// </summary>
+        /// <param name="message">The message to be added.</param>
+        /// <exception cref="ArgumentNullException">
+        /// Raised if <paramref name="message"/> is null.
+        /// Raised if <paramref name="drink"/> is null.
+        /// </exception>
+        public void SetFailure(string message)
+        {
+            Require.IsNotNullOrEmpty(nameof(message), message);
+            this.IsSuccess = false;
+            this.Messages.Add(message);
         }
     }
 }
