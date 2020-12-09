@@ -11,6 +11,12 @@ namespace DrinksMachine.Logic
     /// </summary>
     public interface IDrinkCommand
     {
-        CommandResult PerformCommand(Drink drink);
+        /// <summary>
+        /// Performs a command for the specific task.
+        /// </summary>
+        /// <param name="drink">The drink to apply the command to.</param>
+        /// <param name="template">The drink that should be used as a template.</param>
+        /// <returns>A <see cref="CommandResult"/> containing the result of the command.</returns>
+        CommandResult PerformCommand(Drink drink, Drink template);
     }
 }
