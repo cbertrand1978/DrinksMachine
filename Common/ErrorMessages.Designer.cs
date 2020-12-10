@@ -61,6 +61,24 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collection argument cannot be empty..
+        /// </summary>
+        public static string CollectionCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("CollectionCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collection argument cannot be null..
+        /// </summary>
+        public static string CollectionCannotBeNull {
+            get {
+                return ResourceManager.GetString("CollectionCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} cannot be empty..
         /// </summary>
         public static string Require_cannot_be_empty {

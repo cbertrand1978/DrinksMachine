@@ -5,6 +5,9 @@ using Moq;
 using FluentAssertions;
 using DrinksMachine.Model;
 using Common;
+using System.Collections.Generic;
+using System.Linq;
+using DrinksMachine.Logic.Interface;
 
 namespace DrinksMachine.Logic.Test
 {
@@ -44,6 +47,7 @@ namespace DrinksMachine.Logic.Test
         public void PerformCommandRejectsNullDrink()
         {
             var result = new CommandResult();
+            result.Drink = null;
             Assert.Throws<ArgumentNullException>(() => this.Target.PerformCommand(this.DrinkTemplate, result), "Command must reject a null drink.");
         }
 
@@ -61,9 +65,94 @@ namespace DrinksMachine.Logic.Test
         }
 
         [Test]
+        public void PerformCommandRejectsNullIngredients()
+        {
+            var result = new CommandResult();
+            this.Drink.Ingredients = null;
+            result.Drink = this.Drink;
+            this.DrinkTemplate.Ingredients = null;
+            Assert.Throws<ArgumentNullException>(() => this.Target.PerformCommand(this.DrinkTemplate, result), "Command must reject an empty ingredient list.");
+        }
+
+        [Test]
         public void PerformCommandRejectsEmptyIngredients()
         {
+            var result = new CommandResult();
+            result.Drink = this.Drink;
+            Assert.Throws<ArgumentException>(() => this.Target.PerformCommand(this.DrinkTemplate, result), "Command must reject an empty ingredient list.");
+        }
 
+        [Test]
+        public void PerformCommandRejectsIngredientNotFound()
+        {
+            var ingredientName = "Coffee";
+            var availableIngredient = "Tea";
+            var ingredientAmount = 2;
+            var ingredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), ingredientAmount } };
+            var availableIngredients = new Dictionary<Ingredient, int>() { { new Ingredient(availableIngredient), ingredientAmount } };
+            var errorMessage = string.Format(CommandMessages.AddIngredientCannotFindIngredient, ingredientName);
+            this.DrinkTemplate.Ingredients = ingredients; ;
+
+
+            this.MockMachineSensorReadings.SetupGet(x => x.IngredientSupply)
+                                          .Returns(availableIngredients);
+
+            var result = new CommandResult(this.Drink);
+            this.Target = new AddIngredientsCommand(this.MockMachineSensorReadings.Object);
+
+            this.Target.PerformCommand(this.DrinkTemplate, result);
+
+            result.IsSuccess.Should().BeFalse("Command must reject insufficient ingredients.");
+            result.Messages.Should().Contain(errorMessage, "Add Ingredient insufficient supply error message incorrect.");
+        }
+
+        [Test]
+        public void PerformCommandRejectsInsufficientIngredients()
+        {
+            var ingredientName = "Coffee";
+            var coffeeAmount = 2;
+            var ingredientSupplyAvailable = 1;
+            var ingredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), coffeeAmount } };
+            var availableIngredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), ingredientSupplyAvailable } };
+            var errorMessage = string.Format(CommandMessages.AddIngredientInsuffientIngredientError, coffeeAmount, ingredientName, ingredientSupplyAvailable);
+            this.DrinkTemplate.Ingredients = ingredients; ;
+
+
+            this.MockMachineSensorReadings.SetupGet(x => x.IngredientSupply)
+                                          .Returns(availableIngredients);
+
+            var result = new CommandResult(this.Drink);
+            this.Target = new AddIngredientsCommand(this.MockMachineSensorReadings.Object);
+
+            this.Target.PerformCommand(this.DrinkTemplate, result);
+
+            result.IsSuccess.Should().BeFalse("Command must reject insufficient ingredients.");
+            result.Messages.Should().Contain(errorMessage, "Add Ingredient insufficient supply error message incorrect.");
+        }
+
+        [Test]
+        public void PerformCommandSuccessful()
+        {
+            var ingredientName = "Coffee";
+            var coffeeAmount = 2;
+            var ingredientSupplyAvailable = 2;
+            var ingredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), coffeeAmount } };
+            var availableIngredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), ingredientSupplyAvailable } };
+            this.DrinkTemplate.Ingredients = ingredients;
+            var successMessage = string.Format(CommandMessages.AddIngredientSuccess, this.DrinkTemplate.Ingredients.Select(x => $"{x.Key}{x.Value}"));
+
+
+            this.MockMachineSensorReadings.SetupGet(x => x.IngredientSupply)
+                                          .Returns(availableIngredients);
+
+            var result = new CommandResult(this.Drink);
+            this.Target = new AddIngredientsCommand(this.MockMachineSensorReadings.Object);
+
+            this.Target.PerformCommand(this.DrinkTemplate, result);
+
+            result.IsSuccess.Should().BeTrue("Command should be successful with correct supplies.");
+            result.Messages.Should().Contain(successMessage, "Add Ingredient success message incorrect.");
+            result.Drink.Ingredients.All(kvp => kvp.Value.Should().Equals(this.DrinkTemplate.Ingredients[kvp.Key]));
         }
     }
 }

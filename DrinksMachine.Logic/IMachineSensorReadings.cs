@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DrinksMachine.Model;
+using System.Collections.Generic;
 
 namespace DrinksMachine.Logic
 {
@@ -25,7 +26,7 @@ namespace DrinksMachine.Logic
         /// <summary>
         /// Get the ingredient supply.
         /// </summary>
-        Dictionary<string, int> IngredientSupply { get; }
+        Dictionary<Ingredient, int> IngredientSupply { get; }
 
         /// <summary>
         /// Uses the machines water heater to heat the water up.

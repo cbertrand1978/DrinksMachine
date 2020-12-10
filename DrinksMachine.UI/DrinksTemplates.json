@@ -1,0 +1,44 @@
+{
+  "Drinks": {
+    "LemonTea": {
+      "Name": "Lemon Tea",
+      "IsHot": true,
+      "AmountOfWaterRequired": 1,
+      "Temperature": 100,
+      "Ingredients": [
+        {
+          "Name": "Lemon Tea",
+          "Amount": 1
+        },
+        {
+          "Name": "Lemon Slice",
+          "Amount": 1
+        }
+      ]
+    },
+    "Coffee": {
+      "Name": "Coffee",
+      "IsHot": true,
+      "AmountOfWaterRequired": 1,
+      "Temperature": 100,
+      "Ingredients": [
+        {
+          "Name": "Coffee",
+          "Amount": 1
+        }
+      ]
+    },
+    "HotChocolate": {
+      "Name": "Hot Chocolate",
+      "IsHot": true,
+      "AmountOfWaterRequired": 1,
+      "Temperature": 100,
+      "Ingredients": [
+        {
+          "Name": "Drinking Chocolate",
+          "Amount": 1
+        }
+      ]
+    }
+  }
+}

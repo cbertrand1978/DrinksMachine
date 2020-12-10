@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DrinksMachine.Logic.Interface;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DrinksMachine.Model
@@ -6,7 +7,7 @@ namespace DrinksMachine.Model
     /// <summary>
     /// Represents a drink - i.e. a liquid that can be swallowed as refreshment or nourishment.
     /// </summary>
-    public class Drink
+    public class Drink : IBeverage
     {
         /// <summary>
         /// Get/Set the name of the drink.
@@ -34,25 +35,45 @@ namespace DrinksMachine.Model
         public Dictionary<Ingredient, int> Ingredients { get; set; }
 
         /// <summary>
+        /// Get/Set the list of actions required to serve the drink.
+        /// </summary>
+        public List<IDrinkCommand> ServingActions { get; set; }
+
+        /// <summary>
         /// Default constructor.
         /// </summary>
         public Drink()
         {
             this.Ingredients = new Dictionary<Ingredient, int>();
+            this.ServingActions = new List<IDrinkCommand>();
         }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="name">The name of the drink.</param>
+        /// <exception cref="ArgumentNullException">
+        /// Raised if <paramref name="name"/> is null.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// Raised if <paramref name="name"/> is empty.
+        /// </exception>
         public Drink(string name)
         {
             Require.IsNotNullOrEmpty(nameof(name), name);
 
             this.Name = name;
             this.Ingredients = new Dictionary<Ingredient, int>();
+            this.ServingActions = new List<IDrinkCommand>();
         }
 
         /// <summary>
         /// Copy constructor.
         /// </summary>
         /// <param name="original">The original drink to copy from.</param>
+        /// <exception cref="ArgumentNullException">
+        /// Raised if <paramref name="original"/> is null.
+        /// </exception>
         public Drink(Drink original)
         {
             Require.IsNotNull(nameof(original), original);
@@ -61,7 +82,8 @@ namespace DrinksMachine.Model
             this.IsHot = original.IsHot;
             this.Name = original.Name;
             this.Temperature = original.Temperature;
-            
+            this.ServingActions = original.ServingActions;
+
         }
     }
 }

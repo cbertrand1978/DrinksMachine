@@ -126,4 +126,10 @@
   <data name="Require_cannot_be_empty" xml:space="preserve">
     <value>{0} cannot be empty.</value>
   </data>
+  <data name="CollectionCannotBeEmpty" xml:space="preserve">
+    <value>Collection argument cannot be empty.</value>
+  </data>
+  <data name="CollectionCannotBeNull" xml:space="preserve">
+    <value>Collection argument cannot be null.</value>
+  </data>
 </root>

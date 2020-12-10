@@ -1,7 +1,6 @@
 ﻿using DrinksMachine.Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DrinksMachine.Logic
 {
@@ -31,12 +30,16 @@ namespace DrinksMachine.Logic
         public CommandResult()
         {
             this.Messages = new List<string>();
+            this.Drink = new Drink();
         }
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="drink">The drink to associate with this result.</param>
+        /// <exception cref="ArgumentNullException">
+        /// Raised if <paramref name="drink"/> is null.
+        /// </exception>
         public CommandResult(Drink drink)
         {
             Require.IsNotNull(nameof(drink), drink);
@@ -51,7 +54,6 @@ namespace DrinksMachine.Logic
         /// <param name="message">The message to be added.</param>
         /// <exception cref="ArgumentNullException">
         /// Raised if <paramref name="message"/> is null.
-        /// Raised if <paramref name="drink"/> is null.
         /// </exception>
         public void SetSuccess(string message)
         {
@@ -66,7 +68,6 @@ namespace DrinksMachine.Logic
         /// <param name="message">The message to be added.</param>
         /// <exception cref="ArgumentNullException">
         /// Raised if <paramref name="message"/> is null.
-        /// Raised if <paramref name="drink"/> is null.
         /// </exception>
         public void SetFailure(string message)
         {

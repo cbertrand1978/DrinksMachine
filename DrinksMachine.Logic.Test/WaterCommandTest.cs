@@ -5,6 +5,7 @@ using Moq;
 using FluentAssertions;
 using DrinksMachine.Model;
 using Common;
+using DrinksMachine.Logic.Interface;
 
 namespace DrinksMachine.Logic.Test
 {
@@ -44,6 +45,7 @@ namespace DrinksMachine.Logic.Test
         public void PerformCommandRejectsNullDrink()
         {
             var result = new CommandResult();
+            result.Drink = null;
             Assert.Throws<ArgumentNullException>(() => this.Target.PerformCommand(this.DrinkTemplate, result), "Command must reject a null drink.");
         }
 
@@ -94,7 +96,7 @@ namespace DrinksMachine.Logic.Test
                                           .Returns(waterAmount);
 
             this.MockMachineSensorReadings.Setup(x => x.IncreaseWaterTemperature(It.IsAny<int>()))
-                                          .Callback<int?>((d) => this.MockMachineSensorReadings.SetupGet(x => x.WaterTemperature).Returns(d ?? 0));
+                                          .Callback<int?>((i) => this.MockMachineSensorReadings.SetupGet(x => x.WaterTemperature).Returns(i ?? 0));
 
             this.Target = new WaterCommand(this.MockMachineSensorReadings.Object);
             var result = new CommandResult(this.Drink);

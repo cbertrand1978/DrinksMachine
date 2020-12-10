@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Common;
 
 public static class Require
@@ -54,6 +55,75 @@ public static class Require
         if (item.Equals(string.Empty))
         {
             throw new ArgumentException(string.Format(ErrorMessages.Require_cannot_be_empty, paramName), paramName);
+        }
+    }
+
+    /// <summary>
+    /// Throws a <see cref="T:System.ArgumentNullException"/> if the specified collection is
+    /// a null reference or empty.
+    /// </summary>
+    /// <param name="paramName">The name of the method parameter.</param>
+    /// <param name="collection">The <see cref="T:System.Collections.Generic.IEnumerable`1"/></param>
+    public static void CollectionNotNullOrEmpty(string paramName, IList collection)
+    {
+        if (string.IsNullOrEmpty(paramName))
+        {
+            throw new ArgumentException(ErrorMessages.Require_paramName_cannot_be_null_or_empty, nameof(paramName));
+        }
+
+        if (collection == null)
+        {
+            throw new ArgumentNullException(ErrorMessages.CollectionCannotBeEmpty, paramName);
+        }
+
+        if (collection.Count < 1)
+        {
+            throw new ArgumentException(ErrorMessages.CollectionCannotBeEmpty, paramName);
+        }
+    }
+
+    /// <summary>
+    /// Throws a <see cref="T:System.ArgumentNullException"/> if the specified collection is
+    /// a null reference or empty.
+    /// </summary>
+    /// <param name="collection">The <see cref="T:System.Collections.Generic.IDictionary`1"/></param>
+    /// <param name="parameter">The name of the method parameter.</param>
+    public static void CollectionNotNullOrEmpty(string paramName, IDictionary collection)
+    {
+        if (string.IsNullOrEmpty(paramName))
+        {
+            throw new ArgumentException(ErrorMessages.Require_paramName_cannot_be_null_or_empty, nameof(paramName));
+        }
+
+        if (collection == null)
+        {
+            throw new ArgumentNullException(paramName, ErrorMessages.CollectionCannotBeEmpty);
+        }
+
+        if (collection.Count < 1)
+        {
+            throw new ArgumentException(ErrorMessages.CollectionCannotBeEmpty, paramName);
+        }
+    }
+
+    /// <summary>
+    /// Throws a <see cref="T:System.ArgumentNullException"/> if the specified collection is
+    /// a null reference or empty.
+    /// </summary>
+    /// <param name="collection">The <see cref="T:System.Collections.Generic.IDictionary`1"/></param>
+    /// <param name="parameter">The name of the method parameter.</param>
+    public static void IsCorrectType<T>(string paramName, object obj) where T: class
+    {
+        if (string.IsNullOrEmpty(paramName))
+        {
+            throw new ArgumentException(ErrorMessages.Require_paramName_cannot_be_null_or_empty, nameof(paramName));
+        }
+
+        var result = obj as T;
+
+        if (result == null)
+        {
+            throw new ArgumentException(paramName, ErrorMessages.CollectionCannotBeEmpty);
         }
     }
 }

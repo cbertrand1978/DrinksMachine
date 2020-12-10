@@ -61,6 +61,42 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to &apos;{0}&apos;..
+        /// </summary>
+        public static string ActionToPerformFailure {
+            get {
+                return ResourceManager.GetString("ActionToPerformFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully &apos;{0}&apos;..
+        /// </summary>
+        public static string ActionToPerformSuccess {
+            get {
+                return ResourceManager.GetString("ActionToPerformSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find the ingredient &apos;{0}&apos;..
+        /// </summary>
+        public static string AddIngredientCannotFindIngredient {
+            get {
+                return ResourceManager.GetString("AddIngredientCannotFindIngredient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to add &apos;{0}&apos; of &apos;{1}&apos;, only &apos;{2}&apos; available..
+        /// </summary>
+        public static string AddIngredientInsuffientIngredientError {
+            get {
+                return ResourceManager.GetString("AddIngredientInsuffientIngredientError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The following ingredients were successfully added : &apos;{0}&apos;..
         /// </summary>
         public static string AddIngredientSuccess {

@@ -1,16 +1,20 @@
-﻿using DrinksMachine.Model;
+﻿using Common;
+using DrinksMachine.Logic.Interface;
+using DrinksMachine.Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DrinksMachine.Logic
 {
-    public class AddIngredientsCommand : IDrinkCommand
+    /// <summary>
+    /// Allows the exection of serving actions using the <see cref="IDrinkCommand"/> API.
+    /// </summary>
+    public class ServeDrinkCommand : IDrinkCommand
     {
+
         /// <summary>
-        /// Get/Set the sensor readings interface.
+        /// Get/Set the action that this command will perform.
         /// </summary>
-        private IMachineSensorReadings SensorReadings { get; set; }
+        private Func<CommandResult, string, bool> ActionToPerform { get; set; }
 
         /// <summary>
         /// Constructor.
@@ -19,12 +23,13 @@ namespace DrinksMachine.Logic
         /// <exception cref="ArgumentNullException">
         /// Raised if <paramref name="machineSensorReadings"/> is null.
         /// </exception>
-        public AddIngredientsCommand(IMachineSensorReadings machineSensorReadings)
+        public ServeDrinkCommand(Func<CommandResult, string, bool> actionToPerform)
         {
-            Require.IsNotNull(nameof(machineSensorReadings), machineSensorReadings);
+            Require.IsNotNull(nameof(actionToPerform), actionToPerform);
 
-            this.SensorReadings = machineSensorReadings;
+            this.ActionToPerform = actionToPerform;
         }
+
         /// <summary>
         /// Performs a command for the specific task.
         /// </summary>
@@ -36,6 +41,8 @@ namespace DrinksMachine.Logic
             Require.IsNotNull(nameof(template), template);
             Require.IsNotNull(nameof(result), result);
             Require.IsNotNull(nameof(result.Drink), result.Drink);
+
+            this.ActionToPerform(result, CommandMessages.ActionToPerformSuccess);
 
             return result.IsSuccess;
         }
