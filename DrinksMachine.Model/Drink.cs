@@ -7,7 +7,7 @@ namespace DrinksMachine.Model
     /// <summary>
     /// Represents a drink - i.e. a liquid that can be swallowed as refreshment or nourishment.
     /// </summary>
-    public class Drink : IBeverage
+    public class Drink : IBeverage, IBeverageTemplate
     {
         /// <summary>
         /// Get/Set the name of the drink.
@@ -32,7 +32,7 @@ namespace DrinksMachine.Model
         /// <summary>
         /// Get/Set the list of <see cref="Ingredient"/> needed to make the drink.
         /// </summary>
-        public Dictionary<Ingredient, int> Ingredients { get; set; }
+        public Dictionary<string, int> Ingredients { get; set; }
 
         /// <summary>
         /// Get/Set the list of actions required to serve the drink.
@@ -44,7 +44,7 @@ namespace DrinksMachine.Model
         /// </summary>
         public Drink()
         {
-            this.Ingredients = new Dictionary<Ingredient, int>();
+            this.Ingredients = new Dictionary<string, int>();
             this.ServingActions = new List<IDrinkCommand>();
         }
 
@@ -63,7 +63,7 @@ namespace DrinksMachine.Model
             Require.IsNotNullOrEmpty(nameof(name), name);
 
             this.Name = name;
-            this.Ingredients = new Dictionary<Ingredient, int>();
+            this.Ingredients = new Dictionary<string, int>();
             this.ServingActions = new List<IDrinkCommand>();
         }
 

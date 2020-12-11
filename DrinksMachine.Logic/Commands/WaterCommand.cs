@@ -41,7 +41,11 @@ namespace DrinksMachine.Logic
             Require.IsNotNull(nameof(result), result);
             Require.IsNotNull(nameof(result.Drink), result.Drink);
 
-            if (this.SensorReadings.WaterTemperature != template.Temperature)
+            if (this.SensorReadings.WaterTankLevel < template.AmountOfWaterRequired)
+            {
+                result.SetFailure(string.Format(CommandMessages.WaterCommandWaterAmountFailure, template.AmountOfWaterRequired, this.SensorReadings.WaterTankLevel));
+            }
+            else if (this.SensorReadings.WaterTemperature < template.Temperature)
             {
                 this.SensorReadings.IncreaseWaterTemperature(template.Temperature);
             }
@@ -49,12 +53,9 @@ namespace DrinksMachine.Logic
             if (this.SensorReadings.WaterTemperature == template.Temperature)
             {
                 result.Drink.Temperature = this.SensorReadings.WaterTemperature;
+                result.Drink.AmountOfWaterRequired = template.AmountOfWaterRequired;
+                this.SensorReadings.DecreaseWaterLevel(template.AmountOfWaterRequired);
                 result.SetSuccess(string.Format(CommandMessages.WaterCommandTemperatureSuccess, result.Drink.Temperature));
-
-                if (this.SensorReadings.WaterTankLevel < template.AmountOfWaterRequired)
-                {
-                    result.SetFailure(string.Format(CommandMessages.WaterCommandWaterAmountFailure, template.AmountOfWaterRequired, this.SensorReadings.WaterTankLevel));
-                }
             }
             else
             {

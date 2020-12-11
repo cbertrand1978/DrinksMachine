@@ -88,8 +88,8 @@ namespace DrinksMachine.Logic.Test
             var ingredientName = "Coffee";
             var availableIngredient = "Tea";
             var ingredientAmount = 2;
-            var ingredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), ingredientAmount } };
-            var availableIngredients = new Dictionary<Ingredient, int>() { { new Ingredient(availableIngredient), ingredientAmount } };
+            var ingredients = new Dictionary<string, int>() { { new string(ingredientName), ingredientAmount } };
+            var availableIngredients = new Dictionary<string, int>() { { availableIngredient, ingredientAmount } };
             var errorMessage = string.Format(CommandMessages.AddIngredientCannotFindIngredient, ingredientName);
             this.DrinkTemplate.Ingredients = ingredients; ;
 
@@ -112,8 +112,8 @@ namespace DrinksMachine.Logic.Test
             var ingredientName = "Coffee";
             var coffeeAmount = 2;
             var ingredientSupplyAvailable = 1;
-            var ingredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), coffeeAmount } };
-            var availableIngredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), ingredientSupplyAvailable } };
+            var ingredients = new Dictionary<string, int>() { { ingredientName, coffeeAmount } };
+            var availableIngredients = new Dictionary<string, int>() { { ingredientName, ingredientSupplyAvailable } };
             var errorMessage = string.Format(CommandMessages.AddIngredientInsuffientIngredientError, coffeeAmount, ingredientName, ingredientSupplyAvailable);
             this.DrinkTemplate.Ingredients = ingredients; ;
 
@@ -136,10 +136,10 @@ namespace DrinksMachine.Logic.Test
             var ingredientName = "Coffee";
             var coffeeAmount = 2;
             var ingredientSupplyAvailable = 2;
-            var ingredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), coffeeAmount } };
-            var availableIngredients = new Dictionary<Ingredient, int>() { { new Ingredient(ingredientName), ingredientSupplyAvailable } };
+            var ingredients = new Dictionary<string, int>() { { ingredientName, coffeeAmount } };
+            var availableIngredients = new Dictionary<string, int>() { { ingredientName, ingredientSupplyAvailable } };
             this.DrinkTemplate.Ingredients = ingredients;
-            var successMessage = string.Format(CommandMessages.AddIngredientSuccess, this.DrinkTemplate.Ingredients.Select(x => $"{x.Key}{x.Value}"));
+            var successMessage = string.Format(CommandMessages.AddIngredientSuccess, string.Join(", ", this.DrinkTemplate.Ingredients.Select(x => $"{x.Key}: {x.Value}")));
 
 
             this.MockMachineSensorReadings.SetupGet(x => x.IngredientSupply)

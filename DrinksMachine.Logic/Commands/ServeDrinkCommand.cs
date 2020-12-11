@@ -42,7 +42,14 @@ namespace DrinksMachine.Logic
             Require.IsNotNull(nameof(result), result);
             Require.IsNotNull(nameof(result.Drink), result.Drink);
 
-            this.ActionToPerform(result, CommandMessages.ActionToPerformSuccess);
+            if (result.IsSuccess)
+            {
+                this.ActionToPerform(result, CommandMessages.ActionToPerformSuccess);
+            }
+            else
+            {
+                this.ActionToPerform(result, CommandMessages.ActionToPerformFailure);
+            }
 
             return result.IsSuccess;
         }

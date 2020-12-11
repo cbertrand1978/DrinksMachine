@@ -31,6 +31,7 @@ namespace DrinksMachine.Logic
         {
             this.Messages = new List<string>();
             this.Drink = new Drink();
+            this.IsSuccess = true;
         }
 
         /// <summary>
@@ -44,8 +45,8 @@ namespace DrinksMachine.Logic
         {
             Require.IsNotNull(nameof(drink), drink);
             this.Messages = new List<string>();
-
             this.Drink = drink;
+            this.IsSuccess = true;
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace DrinksMachine.Logic
         public void SetSuccess(string message)
         {
             Require.IsNotNullOrEmpty(nameof(message), message);
-            this.IsSuccess = true;
+            this.IsSuccess = this.IsSuccess && true; ;
             this.Messages.Add(message);
         }
 

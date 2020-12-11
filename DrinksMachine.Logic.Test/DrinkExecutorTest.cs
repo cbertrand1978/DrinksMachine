@@ -36,47 +36,39 @@ namespace DrinksMachine.Logic.Test
 
             this.Target = new DrinkExecutor();
             this.Drink = new Drink("Test");
-            this.Drink.ServingActions.Add(this.MockCommand.Object);
             this.Template = new Drink("TestTemplate");
+            this.Template.ServingActions.Add(this.MockCommand.Object);
             this.Template.IsHot = true;
-            this.Template.Ingredients.Add(new Ingredient("TestIngredient"), 1);
-        }
-
-        [Test]
-        public void ExecuteCommandsRejectsNullDrink()
-        {
-            Assert.Throws<ArgumentNullException>(() => this.Target.ExecuteCommands(null, this.Template), "Should reject null drink.");
+            this.Template.Ingredients.Add("TestIngredient", 1);
         }
 
         [Test]
         public void ExecuteCommandsRejectsNullTemplate()
         {
-            Assert.Throws<ArgumentNullException>(() => this.Target.ExecuteCommands(this.Drink, null), "Should reject null template.");
-        }
-
-        [Test]
-        public void ExecuteCommandsRejectsWrongDrinkType()
-        {
-            var drink = new ColdDrink();
-            Assert.Throws<ArgumentException>(() => this.Target.ExecuteCommands(drink, this.Template), "Should reject incorrect drink type.");
+            Assert.Throws<ArgumentNullException>(() => this.Target.ExecuteCommands(null), "Should reject null template.");
         }
 
         [Test]
         public void ExecuteCommandsRejectsWrongTemplateType()
         {
             var template = new ColdDrink();
-            Assert.Throws<ArgumentException>(() => this.Target.ExecuteCommands(this.Drink, template), "Should reject incorrect template type.");
+            Assert.Throws<ArgumentException>(() => this.Target.ExecuteCommands(template), "Should reject incorrect template type.");
         }
 
         [Test]
         public void ExecuteCommandsSuccess()
         {
-            var result = this.Target.ExecuteCommands(this.Drink, this.Template);
+            var result = this.Target.ExecuteCommands(this.Template);
             result.IsSuccess.Should().BeTrue("Command should execute successfully.");
         }
 
-        private class ColdDrink : IBeverage
+        private class ColdDrink : IBeverage, IBeverageTemplate
         {
+            public string Name { get; set; }
+            public bool IsHot { get; set; }
+            public int AmountOfWaterRequired { get; set; }
+            public int Temperature { get; set; }
+            public Dictionary<string, int> Ingredients { get; set; }
             public List<IDrinkCommand> ServingActions { get; private set; }
 
             public ColdDrink()

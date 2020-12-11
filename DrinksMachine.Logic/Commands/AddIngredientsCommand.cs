@@ -47,9 +47,14 @@ namespace DrinksMachine.Logic
             {
                 if (!this.SensorReadings.IngredientSupply.ContainsKey(ingredient.Key))
                 {
-                    result.SetFailure(string.Format(CommandMessages.AddIngredientCannotFindIngredient, ingredient.Key.Name));
+                    result.SetFailure(string.Format(CommandMessages.AddIngredientCannotFindIngredient, ingredient.Key));
                     success = false;
                     break;
+                }
+
+                if (ingredient.Value == 0)
+                {
+                    continue;
                 }
 
                 if (this.SensorReadings.IngredientSupply[ingredient.Key] < ingredient.Value)
@@ -58,13 +63,17 @@ namespace DrinksMachine.Logic
                         this.SensorReadings.IngredientSupply[ingredient.Key]));
                     success = false;
                 }
+                else
 
-                result.Drink.Ingredients.Add(ingredient.Key, ingredient.Value);
+                {
+                    result.Drink.Ingredients.Add(ingredient.Key, ingredient.Value);
+                    this.SensorReadings.DecreaseIngredient(ingredient.Key, ingredient.Value);
+                }
             }
 
             if (success)
             {
-                result.SetSuccess(string.Format(CommandMessages.AddIngredientSuccess, result.Drink.Ingredients.Select(x => $"{x.Key}{x.Value}")));
+                result.SetSuccess(string.Format(CommandMessages.AddIngredientSuccess, string.Join(", ", result.Drink.Ingredients.Select(x => $"{x.Key}: {x.Value}"))));
             }
 
             return result.IsSuccess;
