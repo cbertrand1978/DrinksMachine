@@ -1,4 +1,4 @@
-# DrinksMachine
+# Drinks Machine
 
 Technical Test
 
